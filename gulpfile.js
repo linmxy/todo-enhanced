@@ -22,6 +22,7 @@
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var del = require('del');
+var bower = require('gulp-bower');
 var runSequence = require('run-sequence');
 var browserSync = require('browser-sync');
 var pagespeed = require('psi');
@@ -52,7 +53,7 @@ gulp.task('copy', function () {
 
 // Lint JavaScript
 gulp.task('jshint', function () {
-    return gulp.src('src/js/**/*.js')
+    return gulp.src(['src/js/**/*.js', '!src/js/lib/**'])
         .pipe(reload({stream: true, once: true}))
         .pipe($.jshint())
         .pipe($.jshint.reporter('jshint-stylish'))
@@ -76,7 +77,7 @@ gulp.task('styles', function () {
             'src/sass/*.sass',
             'src/css/**/*.css'
         ])
-        .pipe($.changed('styles', {extension: '.sass'}))
+        .pipe($.changed('sass', {extension: '.sass'}))
         .pipe($.rubySass({
             style: 'expanded',
             precision: 10
@@ -94,7 +95,7 @@ gulp.task('styles', function () {
 gulp.task('html', function () {
     var assets = $.useref.assets({searchPath: '{.tmp,src}'});
 
-    return gulp.src('src/**/*.html')
+    return gulp.src(['src/**/*.html', '!src/js/lib/**'])
         .pipe(assets)
         .pipe($.if('*.js', $.uglify({preserveComments: 'some'})))
 //        .pipe($.if('*.css', $.uncss({
@@ -116,6 +117,12 @@ gulp.task('html', function () {
         .pipe($.size({title: 'html'}));
 });
 
+
+gulp.task('bower', function() {
+    return bower()
+        .pipe(gulp.dest('public/js/lib/'))
+});
+
 gulp.task('clean', del.bind(null, ['.tmp', 'public']));
 
 gulp.task('serve', ['styles'], function () {
@@ -129,7 +136,7 @@ gulp.task('serve', ['styles'], function () {
     gulp.watch(['src/**/*.html'], reload);
     gulp.watch(['src/sass/**/*.sass'], ['styles', reload]);
     gulp.watch(['src/css/**/*.css'], ['styles', reload]);
-    gulp.watch(['src/js/**/*.js'], ['jshint']);
+    gulp.watch(['src/js/**/*.js', '!src/js/lib/**'], ['jshint']);
     gulp.watch(['src/img/**/*'], reload);
 });
 
@@ -144,7 +151,7 @@ gulp.task('serve:dist', ['default'], function () {
 });
 
 gulp.task('default', ['clean'], function (cb) {
-    runSequence('styles', ['jshint', 'html', 'img', 'copy'], cb);
+    runSequence('styles', ['jshint', 'html', 'images', 'bower', 'copy'], cb);
 });
 
 gulp.task('pagespeed', pagespeed.bind(null, {
