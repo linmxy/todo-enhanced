@@ -6,22 +6,24 @@
     <link rel="stylesheet" href="css/todo.css">
 </head>
 <body>
-<section id="todoapp">
-    <header id="header">
-        <h1>todos</h1>
-        <input id="new-todo" type="text" placeholder="What needs to be done?" autofocus>
-    </header>
-    <section id="main">
-        <input id="toggle-all" type="checkbox">
-        <label for="toggle-all">Mark all as complete</label>
-        <ul id="todo-list"></ul>
+<div id="wrapper">
+    <section id="todoapp">
+        <header id="header">
+            <h1>todos</h1>
+            <input id="new-todo" type="text" placeholder="What needs to be done?" autofocus>
+        </header>
+        <section id="main">
+            <input id="toggle-all" type="checkbox">
+            <label for="toggle-all">Mark all as complete</label>
+            <ul id="todo-list"></ul>
+        </section>
+        <footer id="footer"></footer>
     </section>
-    <footer id="footer"></footer>
-</section>
-<footer id="info">
-    <p>Double-click to edit a todo</p>
+    <div class="push"></div>
+</div>
 
-    <p>Refactor by <a href="https://github.com/linmxy">Mike Lin</a></p>
+<footer id="instructions">
+    <p>Refactor by <a href="https://github.com/linmxy/todo-forever">Mike Lin</a></p>
 </footer>
 <script data-main="js/main" src="js/lib/requirejs/require.js"></script>
 </body>

@@ -10,12 +10,12 @@ define([
     var Todo = Backbone.Model.extend({
         defaults: {
             title: 'empty todo...',
-            completed: false
+            done: false
         },
 
         toggle: function () {
             this.save({
-                completed: !this.get('completed')
+                done: !this.get('completed')
             });
         }
     });

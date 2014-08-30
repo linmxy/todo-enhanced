@@ -14,12 +14,12 @@ define([
 
         localStorage: new Store('todos-backbone'),
 
-        completed: function () {
-            return this.where({completed: true});
+        done: function () {
+            return this.where({done: true});
         },
 
         remaining: function () {
-            return this.where({completed: false});
+            return this.where({done: false});
         },
 
         nextOrder: function () {

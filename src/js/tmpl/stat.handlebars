@@ -1,6 +1,6 @@
-{{#if true}}
+{{#ifCond done 1}}
 <a id="clear-completed">Clear {{done}} completed {{#ifCond remaining 1}}item{{else}}items{{/ifCond}}</a>
-{{/if}}
+{{/ifCond}}
 
 <div class="todo-count">
     <b>{{remaining}}</b>

@@ -43,7 +43,7 @@ define([
         // Re-rendering the App just means refreshing the statistics -- the rest
         // of the app doesn't change.
         render: function () {
-            var completed = Todos.completed().length;
+            var done = Todos.done().length;
             var remaining = Todos.remaining().length;
 
             if (Todos.length) {
@@ -51,7 +51,7 @@ define([
                 this.$footer.show();
 
                 this.$footer.html(this.template({
-                    completed: completed,
+                    done: done,
                     remaining: remaining
                 }));
 
@@ -98,7 +98,7 @@ define([
             return {
                 title: this.$input.val().trim(),
                 order: Todos.nextOrder(),
-                completed: false
+                done: false
             };
         },
 
@@ -111,17 +111,17 @@ define([
             this.$input.val('');
         },
 
-        clearCompleted: function () {
-            _.invoke(Todos.completed(), 'destroy');
+        cleardone: function () {
+            _.invoke(Todos.done(), 'destroy');
             return false;
         },
 
         toggleAllComplete: function () {
-            var completed = this.allCheckbox.checked;
+            var done = this.allCheckbox.checked;
 
             Todos.each(function (todo) {
                 todo.save({
-                    completed: completed
+                    done: done
                 });
             });
         }
