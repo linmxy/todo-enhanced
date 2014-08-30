@@ -1,2 +1,64 @@
+html, body
+    margin: 0
+    padding: 0
 body
     font-family: helvetica, arial, sans-serif
+    line-height: 1.4em
+    background: #eeeeee
+    color: #333333
+    width: 520px
+    margin: 0 auto
+    -webkit-font-smoothing: antialiased
+
+#todoapp
+    background: #fff
+    padding: 20px
+    margin-bottom: 40px
+    border-radius: 0 0 5px 5px
+
+    >h1
+        font-size: 36px
+        font-weight: bold
+        text-align: center
+        padding: 0 0 10px 0
+    input[type="text"]
+        width: 466px
+        font-size: 24px
+        font-family: inherit
+        line-height: 1.4em
+        border: 0
+        outline: none
+        padding: 6px
+        border: 1px solid #999999
+        &::-webkit-input-placeholder
+            font-style: italic
+#main
+    display: none
+    #todo-list
+        margin: 10px 0
+        padding: 0
+        list-style: none
+        li
+            padding: 18px 20px 18px 0
+            position: relative
+            font-size: 24px
+            border-bottom: 1px solid #cccccc
+            &:last-child
+                border-bottom: none
+            .done label
+                color: #777777
+                text-decoration: line-through
+            .destroy
+                position: absolute
+                right: 5px
+                top: 20px
+                display: none
+                cursor: pointer
+                width: 20px
+                height: 20px
+                background: url(../img/icons/delete.png) no-repeat
+                &:hover
+                    background-position: 0 -20px
+            &:hover .destroy
+                display: block
+            
