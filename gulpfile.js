@@ -17,6 +17,13 @@
  *
  */
 
+/**
+ * @Auther: linmxy@gmail.com
+ *
+ * customized google web starter kit building file
+ */
+
+
 'use strict';
 
 var gulp = require('gulp');
@@ -111,7 +118,7 @@ gulp.task('html', function () {
         .pipe($.if('*.css', $.csso()))
         .pipe(assets.restore())
         .pipe($.useref())
-        .pipe($.replace('site.css', 'site.min.css'))
+        .pipe($.replace('todo.css', 'todo.min.css'))
         .pipe($.if('*.html', $.minifyHtml()))
         .pipe(gulp.dest('public'))
         .pipe($.size({title: 'html'}));

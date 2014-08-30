@@ -1,8 +1,9 @@
 {
-    "name": "todomvc-backbone",
+    "name": "todo-forever",
     "version": "0.0.0",
     "dependencies": {
         "requirejs": "~2.1.4",
+        "requirejs-text":"~2.0.12",
         "backbone": "~1.x.x",
         "underscore": "~1.6.0",
         "handlebars": "~1.3.0",
