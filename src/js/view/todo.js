@@ -2,10 +2,10 @@
  * Created by linmin on 30/8/14.
  */
 define([
-    '$',
-    '_',
+    'jquery',
+    'underscore',
     'Backbone',
-    'text!tmpl/item.handlebars',
+    'Text!tmpl/item.handlebars',
     'common'
 ], function ($, _, Backbone, todosTemplate, Common) {
     'use strict';

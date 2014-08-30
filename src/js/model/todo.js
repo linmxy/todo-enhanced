@@ -2,7 +2,7 @@
  * Created by linmin on 29/8/14.
  */
 define([
-    '_',
+    'underscore',
     'Backbone'
 ], function (_, Backbone) {
     'use strict';

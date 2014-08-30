@@ -2,10 +2,10 @@
  * Created by linmin on 30/8/14.
  */
 define([
-    '_',
+    'underscore',
     'Backbone',
     'Storage',
-    'models/todo'
+    'model/todo'
 ], function (_, Backbone, Store, Todo) {
     'use strict';
 

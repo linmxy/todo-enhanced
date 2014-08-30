@@ -3,33 +3,16 @@
  */
 require.config({
     shim: {
-        JQuery: {
-            exports: '$'
-        },
-        Underscore: {
-            exports: '_'
-        },
         Handlebars: {
             exports: 'Handlebars'
         },
-        Backbone: {
-            deps: [
-                'Underscore',
-                'JQuery'
-            ],
-            exports: 'Backbone'
-        },
-        Storage: {
-            deps: ['backbone'],
-            exports: 'Storage'
-        }
     },
     paths: {
-        JQuery: [
+        jquery: [
             'http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min',
             'lib/jquery/jquery'
         ],
-        Underscore: [
+        underscore: [
             'http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min',
             'lib/underscore/underscore'
         ],
@@ -37,10 +20,10 @@ require.config({
             'http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min',
             'lib/backbone/backbone'
         ],
-        Storage: [
-            'http://cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.1.13/backbone.localStorage-min',
-            'lib/backbone.Localstorage/backbone.Localstorage'
-        ],
+//        Storage: [
+//            'http://cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.1.13/backbone.localStorage-min',
+//            'lib/backbone.localStorage/backbone.localStorage'
+//        ],
         Text: [
             'http://cdnjs.cloudflare.com/ajax/libs/require-text/2.0.12/text.min',
             'lib/requirejs-text/text'
@@ -52,7 +35,10 @@ require.config({
     }
 });
 
-require(['Backbone','Handlebars'], function (Backbone, Handlebars) {
+require(['underscore','Backbone'], function (_,Storage) {
+    console.log("it works!", _, Storage);
+});
+require(['Backbone','view/app','Handlebars'], function (Backbone, AppView, Handlebars) {
     Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
         switch (operator) {
             case '==':
@@ -75,6 +61,7 @@ require(['Backbone','Handlebars'], function (Backbone, Handlebars) {
                 return options.inverse(this);
         }
     });
-    console.log("it works!", Backbone);
+//    console.log("it works!", Backbone);
 
+    new AppView();
 });

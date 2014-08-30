@@ -102,7 +102,7 @@
     "maxparams"     : 10,       // Maximum number of formal parameters allowed per function
     "maxdepth"      : 4,        // Maximum nested statement depth for a function
     "maxstatements" : 33,       // Maximum number of statements allowed per function
-    "maxcomplexity" : 15,       // Maximum cyclomatic complexity of a function
+    "maxcomplexity" : 25,       // Maximum cyclomatic complexity of a function
     // http://en.wikipedia.org/wiki/Cyclomatic_complexity
 
     // == JSLint Legacy ===================================================

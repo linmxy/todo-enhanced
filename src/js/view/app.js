@@ -1,25 +1,20 @@
 define([
-    '$',
-    '_',
+    'jquery',
+    'underscore',
     'Backbone',
-    'collections/todos',
-    'views/todo',
-    'text!tmpl/stat.handlebars',
+    'collection/todos',
+    'view/todo',
+    'Text!tmpl/stat.handlebars',
     'common'
 ], function ($, _, Backbone, Todos, TodoView, statsTemplate, Common) {
     'use strict';
 
-    // Our overall **AppView** is the top-level piece of UI.
     var AppView = Backbone.View.extend({
 
-        // Instead of generating a new element, bind to the existing skeleton of
-        // the App already present in the HTML.
         el: '#todoapp',
 
-        // Compile our stats template
         template: _.template(statsTemplate),
 
-        // Delegated events for creating new items, and clearing completed ones.
         events: {
             'keypress #new-todo':		'createOnEnter',
             'click #clear-completed':	'clearCompleted',

@@ -18,8 +18,6 @@
  */
 
 /**
- * @Auther: linmxy@gmail.com
- *
  * customized google web starter kit building file
  */
 
