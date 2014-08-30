@@ -49,7 +49,8 @@ var AUTOPREFIXER_BROWSERS = [
 gulp.task('copy', function () {
     return gulp.src([
         'src/*',
-        '!src/*.html'
+        '!src/*.html',
+        '!src/sass'
     ], {
         dot: true
     }).pipe(gulp.dest('public'))
@@ -76,6 +77,15 @@ gulp.task('images', function () {
         .pipe($.size({title: 'img'}));
 });
 
+gulp.task('javascripts', function () {
+    return gulp.src([
+            'src/js/**/*',
+            '!src/js/lib/**'
+        ])
+        .pipe($.if('*.js', $.uglify({preserveComments: 'some'})))
+        .pipe(gulp.dest('public/js'));
+});
+
 gulp.task('styles', function () {
     // For best performance, don't add Sass partials to `gulp.src`
     return gulp.src([
@@ -87,7 +97,7 @@ gulp.task('styles', function () {
             style: 'expanded',
             precision: 10
         })
-        .on('error', console.error.bind(console))
+            .on('error', console.error.bind(console))
         )
         .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
         .pipe(gulp.dest('.tmp/css'))
@@ -103,20 +113,10 @@ gulp.task('html', function () {
     return gulp.src(['src/**/*.html', '!src/js/lib/**'])
         .pipe(assets)
         .pipe($.if('*.js', $.uglify({preserveComments: 'some'})))
-//        .pipe($.if('*.css', $.uncss({
-//            html: [
-//                'src/index.html'
-//            ],
-//            // CSS Selectors for UnCSS to ignore
-//            ignore: [
-//                /.navdrawer-container.open/,
-//                /.src-bar.open/
-//            ]
-//        })))
         .pipe($.if('*.css', $.csso()))
         .pipe(assets.restore())
         .pipe($.useref())
-        .pipe($.replace('todo.css', 'todo.min.css'))
+//        .pipe($.replace('todo.css', 'todo.min.css'))
         .pipe($.if('*.html', $.minifyHtml()))
         .pipe(gulp.dest('public'))
         .pipe($.size({title: 'html'}));
@@ -156,16 +156,16 @@ gulp.task('serve:dist', ['default'], function () {
 });
 
 gulp.task('default', ['clean'], function (cb) {
-    runSequence('styles', ['jshint', 'html', 'images', 'bower', 'copy'], cb);
+    runSequence('styles', ['jshint','javascripts', 'html', 'images', 'bower', 'copy'], cb);
 });
 
 gulp.task('pagespeed', pagespeed.bind(null, {
-    url: 'https://todo-forever.com',
+    url: 'https://www.google.com',
     strategy: 'mobile'
 }));
 
-// Load custom tasks from the `tasks` directory
-try {
-    require('require-dir')('tasks');
-} catch (err) {
-}
+//// Load custom tasks from the `tasks` directory
+//try {
+//    require('require-dir')('tasks');
+//} catch (err) {
+//}

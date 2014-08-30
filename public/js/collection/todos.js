@@ -1,0 +1,1 @@
+define(["underscore","backbone","localstorage","model/todo"],function(e,t,o,r){"use strict";var n=t.Collection.extend({model:r,localStorage:new o("todos-backbone"),completed:function(){return this.where({completed:!0})},remaining:function(){return this.where({completed:!1})},nextOrder:function(){return this.length?this.last().get("order")+1:1},comparator:"order"});return new n});

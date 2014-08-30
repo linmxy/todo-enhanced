@@ -1,6 +1,7 @@
 /**
  * Created by linmin on 29/8/14.
  */
+"use strict";
 require.config({
     shim: {
         handlebars: {
@@ -35,9 +36,6 @@ require.config({
     }
 });
 
-require(['handlebars','handlebars'], function (_,B) {
-    console.log("it works!", _, B);
-});
 require(['backbone','view/app'], function (Backbone, AppView) {
     new AppView();
 });
