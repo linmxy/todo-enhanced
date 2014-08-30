@@ -1,0 +1,1 @@
+define(["jquery","underscore","backbone","text!tmpl/alert.handlebars","common/handlebars"],function(e,t,n,i,l){"use strict";var o=n.View.extend({template:l.compile(i),events:{"click .close":"close"},initialize:function(){},render:function(){return this.$el.html(this.template(this.model.toJSON())),this},close:function(){this.$el.remove()}});return o});

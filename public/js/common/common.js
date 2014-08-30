@@ -1,1 +1,1 @@
-"use strict";define([],function(){var E={TodoFilter:"",ENTER_KEY:13,ESCAPE_KEY:27};return E});
+"use strict";define(["jquery","backbone","view/alert"],function(e,n,r){var t={TodoFilter:"",ENTER_KEY:13,ESCAPE_KEY:27};return t.alert=function(t){var o=new n.Model({content:t}),d=new r({model:o});e(document.body).append(d.render().el)},t});

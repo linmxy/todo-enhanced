@@ -1,8 +1,22 @@
-<div class="view">
+<div>
+<div class="view" title="last update time: {{prettyDate update_time}}">
     <input type="checkbox" class="toggle" {{#if done}}checked="checked"{{/if}} />
 
-    <label>{{title}}</label>
-    <time>{{update}}</time>
+    <label>{{title}}{{^if title}}untitled{{/if}}</label>
+    <span class="ct">created time: <time>{{prettyDate create_time}}</time></span>
+
+    <div class="content">
+        {{content}}
+    </div>
     <a class="destroy"><img src="img/icons/delete.png"/></a>
 </div>
-<input class="edit"  type="text" value="{{title}}">
+<div class="editview edit">
+    <span class="ut">last update time: <time>{{prettyDate update_time}}</time></span>
+    <input class="edit"  type="text" value="{{title}}" placeholder="title">
+    <textarea class="edit" placeholder="TODO...">{{content}}</textarea>
+    <div>
+        <button class="cancel btn">cancel</button>
+        <button class="save btn">save</button>
+    </div>
+</div>
+</div>

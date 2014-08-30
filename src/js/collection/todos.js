@@ -26,8 +26,8 @@ define([
         nextOrder: function () {
             return this.length ? this.last().get('order') + 1 : 1;
         },
-        search: function (keyword) {
-            var keyword = keyword.toLowerCase();
+        search: function (kw) {
+            var keyword = kw.toLowerCase();
             var results = this.filter(function(model){
                 return model.get('title').toLowerCase().indexOf(keyword)>=0 ||
                     model.get('content').toLowerCase().indexOf(keyword)>=0;
@@ -36,7 +36,7 @@ define([
         },
         comparator: function(model) {
             return - model.get('create_time');
-        },
+        }
 //        comparator: 'order'
     });
 
