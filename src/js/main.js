@@ -30,7 +30,7 @@ require.config({
             'lib/requirejs-text/text'
         ],
         handlebars: [
-//            'http://cdnjs.cloudflare.com/ajax/libs/requirejs-handlebars/0.0.2/hbars.min',
+            'http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.4/handlebars.min',
             'lib/handlebars/handlebars'
         ]
     }
