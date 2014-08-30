@@ -1,10 +1,12 @@
+# [![Web Starter Kit](public/img/screenshot.png)](https://github.com/linmxy/todo-enhanced)
+
 ## Overview
 
-[TODO Forever](https://github.com/linmxy/todo-forever) is an experimental boilerplate for web development. Helping you to stay productive following the best practices outlined in Google's [Web Fundamentals](http://developers.google.com/web/fundamentals).
+[TODO Enhanced](https://github.com/linmxy/todo-enhanced) is an experimental boilerplate for MVP web development. Helping you to stay productive following the best practices outlined in Google's [Web Fundamentals](http://developers.google.com/web/fundamentals).
 
 ## Quickstart
 
-[Download](https://github.com/linmxy/todo-forever/archive/master.zip) the source code or clone this repository and build on what is included in the `src` directory.
+[Download](https://github.com/linmxy/todo-enhanced/archive/master.zip) the source code or clone this repository and build on what is included in the `src` directory.
 
 main code directory:
 
@@ -13,7 +15,3 @@ main code directory:
 
 Be sure to look over the [installation docs](doc/install.md) to verify your environment is prepared to run the application.
 Once you have verified that your system can run, check out the [commands](doc/commands.md) available to get started.
-
-## Web Performance
-
-The starting code is based on google's Web Starter Kit. By monitoring the page speed, it strives to give you a high performance starting point out of the box and we actively work on delivering the best [PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/) score and frame-rate possible.
