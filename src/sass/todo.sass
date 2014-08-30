@@ -67,8 +67,9 @@ body
             position: relative
             font-size: 24px
             border-bottom: 1px solid #cccccc
-
-            .done label
+            &:last-child
+                border-bottom: none
+            &.done label
                 color: #777777
                 text-decoration: line-through
             .destroy

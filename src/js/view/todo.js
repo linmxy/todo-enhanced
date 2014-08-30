@@ -19,7 +19,7 @@ define([
 
         // The DOM events specific to an item.
         events: {
-            'click .toggle':	'toggleCompleted',
+            'click .toggle':	'toggleDone',
             'dblclick label':	'edit',
             'click .destroy':	'clear',
             'keypress .edit':	'updateOnEnter',
@@ -37,7 +37,7 @@ define([
 
         render: function () {
             this.$el.html(this.template(this.model.toJSON()));
-            this.$el.toggleClass('completed', this.model.get('completed'));
+            this.$el.toggleClass('done', this.model.get('done'));
 
             this.toggleVisible();
             this.$input = this.$('.edit');
@@ -58,14 +58,14 @@ define([
         },
 
         isHidden: function () {
-            var isCompleted = this.model.get('completed');
+            var isCompleted = this.model.get('done');
             return (// hidden cases only
-                (!isCompleted && Common.TodoFilter === 'completed') ||
+                (!isCompleted && Common.TodoFilter === 'done') ||
                     (isCompleted && Common.TodoFilter === 'active')
                 );
         },
 
-        toggleCompleted: function () {
+        toggleDone: function () {
             this.model.toggle();
         },
 

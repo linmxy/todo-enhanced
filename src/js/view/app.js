@@ -32,7 +32,7 @@ define([
 
             this.listenTo(Todos, 'add', this.addOne);
             this.listenTo(Todos, 'reset', this.addAll);
-            this.listenTo(Todos, 'change:completed', this.filterOne);
+            this.listenTo(Todos, 'change:done', this.filterOne);
             this.listenTo(Todos, 'filter', this.filterAll);
             this.listenTo(Todos, 'all', this.render);
 

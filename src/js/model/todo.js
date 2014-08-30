@@ -15,7 +15,7 @@ define([
 
         toggle: function () {
             this.save({
-                done: !this.get('completed')
+                done: !this.get('done')
             });
         }
     });
