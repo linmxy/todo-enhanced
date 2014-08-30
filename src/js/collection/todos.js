@@ -25,6 +25,13 @@ define([
         nextOrder: function () {
             return this.length ? this.last().get('order') + 1 : 1;
         },
+        search: function (keyword) {
+            var results = this.filter(function(model){
+                return model.get('title').indexOf(keyword)>=0 ||
+                    model.get('content').indexOf(keyword)>=0;
+            });
+            return new TodosCollection(results);
+        },
 
         comparator: 'order'
     });

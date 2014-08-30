@@ -6,8 +6,8 @@ define([
     'underscore',
     'backbone',
     'text!tmpl/item.handlebars',
-    'handlebars',
-    'common'
+    'common/handlebars',
+    'common/common'
 ], function ($, _, Backbone, todosTemplate, Handlebars, Common) {
     'use strict';
 
@@ -20,19 +20,18 @@ define([
         // The DOM events specific to an item.
         events: {
             'click .toggle':	'toggleDone',
-            'dblclick label':	'edit',
+            'dblclick .view':	'edit',
             'click .destroy':	'clear',
             'keypress .edit':	'updateOnEnter',
             'keydown .edit':	'revertOnEscape',
-            'blur .edit':		'close'
+            'click .cancel':    'close',
+            'click .save':		'save'
         },
 
         initialize: function () {
             this.listenTo(this.model, 'change', this.render);
             this.listenTo(this.model, 'destroy', this.remove);
             this.listenTo(this.model, 'visible', this.toggleVisible);
-
-            this.registerHandlebarsPlugins();
         },
 
         render: function () {
@@ -40,17 +39,9 @@ define([
             this.$el.toggleClass('done', this.model.get('done'));
 
             this.toggleVisible();
-            this.$input = this.$('.edit');
+            this.$input = this.$('input.edit');
+            this.$content = this.$('textarea.edit');
             return this;
-        },
-
-        registerHandlebarsPlugins : function() {
-            Handlebars.registerHelper('ifCond', function(v1, v2, options) {
-                if(v1 === v2) {
-                    return options.fn(this);
-                }
-                return options.inverse(this);
-            });
         },
 
         toggleVisible: function () {
@@ -74,20 +65,32 @@ define([
             this.$input.focus();
         },
 
-        close: function () {
-            var value = this.$input.val();
-            var trimmedValue = value.trim();
+        save: function () {
+            var title = this.$input.val();
+            var trimmedTitle = title.trim();
+            var content = this.$content.val();
+            var trimmedContent = content.trim();
+            trimmedContent = trimmedContent.replace(/[^a-zA-Z0-9\s]/g, '');
+            trimmedContent = trimmedContent.replace(/\s{2,}/g, ' ');
+            trimmedContent = trimmedContent.replace(/([\w]{30})[\w]+/g, function(){
+                return arguments[1];
+            });
+            trimmedContent = trimmedContent.substring(0, 140);
 
-            if (trimmedValue) {
-                this.model.save({ title: trimmedValue });
+            if (trimmedTitle || trimmedContent) {
+                this.model.save({ title: trimmedTitle, content: trimmedContent});
 
-                if (value !== trimmedValue) {
+                //Model values changes consisting of whitespaces only are not causing change to be triggered
+                if (title !== trimmedTitle || content !== trimmedContent) {
                     this.model.trigger('change');
                 }
             } else {
                 this.clear();
             }
 
+            this.$el.removeClass('editing');
+        },
+        close: function () {
             this.$el.removeClass('editing');
         },
 
@@ -105,7 +108,11 @@ define([
         },
 
         clear: function () {
-            this.model.destroy();
+            if(!this.model.get('done')){
+                alert('can not delete undone item');
+            }else{
+                this.model.destroy();
+            }
         }
     });
 

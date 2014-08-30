@@ -9,7 +9,10 @@ define([
 
     var Todo = Backbone.Model.extend({
         defaults: {
-            title: 'empty todo...',
+            title: '',
+            create_time: new Date().getTime(),
+            update_time: new Date().getTime(),
+            content : '',
             done: false
         },
 

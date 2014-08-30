@@ -5,8 +5,8 @@ define([
     'collection/todos',
     'view/todo',
     'text!tmpl/stat.handlebars',
-    'handlebars',
-    'common'
+    'common/handlebars',
+    'common/common'
 ], function ($, _, Backbone, Todos, TodoView, statsTemplate, Handlebars, Common) {
     'use strict';
 
@@ -14,20 +14,21 @@ define([
 
         el: '#todoapp',
 
-//        template: _.template(statsTemplate),
         template: Handlebars.compile(statsTemplate),
 
         events: {
-            'keypress #new-todo':		'createOnEnter',
-            'click #clear-completed':	'clearDone',
-            'click #toggle-all':		'toggleAllComplete'
+            'keypress #search': 'search',
+            'click #new-todo': 'createOnEnter',
+            'click #clear-completed': 'clearDone',
+            'click #toggle-all': 'toggleAllComplete'
         },
 
         initialize: function () {
             this.allCheckbox = this.$('#toggle-all')[0];
-            this.$input = this.$('#new-todo');
+            this.$input = this.$('#search');
             this.$footer = this.$('#footer');
             this.$main = this.$('#main');
+            this.$todolist = this.$('.todo-list');
             this.$todoList = this.$('#todo-list');
 
             this.listenTo(Todos, 'add', this.addOne);
@@ -36,17 +37,18 @@ define([
             this.listenTo(Todos, 'filter', this.filterAll);
             this.listenTo(Todos, 'all', this.render);
 
-            this.registerHandlebarsPlugins();
-            Todos.fetch({reset:true});
+
+            Todos.fetch({reset: true});
         },
 
         // Re-rendering the App just means refreshing the statistics -- the rest
         // of the app doesn't change.
         render: function () {
-            var done = Todos.done().length;
-            var remaining = Todos.remaining().length;
+            var collection = this.filtered || Todos;
+            var done = collection.done().length;
+            var remaining = collection.remaining().length;
 
-            if (Todos.length) {
+            if (collection.length) {
                 this.$main.show();
                 this.$footer.show();
 
@@ -67,23 +69,15 @@ define([
             this.allCheckbox.checked = !remaining;
         },
 
-        registerHandlebarsPlugins : function() {
-            Handlebars.registerHelper('ifCond', function(v1, v2, options) {
-                if(v1 === v2) {
-                    return options.fn(this);
-                }
-                return options.inverse(this);
-            });
-        },
-
         addOne: function (todo) {
             var view = new TodoView({ model: todo });
             this.$todoList.append(view.render().el);
         },
 
         addAll: function () {
+            var collection = this.filtered || Todos;
             this.$todoList.empty();
-            Todos.each(this.addOne, this);
+            collection.each(this.addOne, this);
         },
 
         filterOne: function (todo) {
@@ -91,7 +85,8 @@ define([
         },
 
         filterAll: function () {
-            Todos.each(this.filterOne, this);
+            var collection = this.filtered || Todos;
+            collection.each(this.filterOne, this);
         },
 
         newAttributes: function () {
@@ -103,12 +98,32 @@ define([
         },
 
         createOnEnter: function (e) {
-            if (e.which !== Common.ENTER_KEY || !this.$input.val().trim()) {
+            Todos.create(this.newAttributes());
+        },
+        search: function (e) {
+            if (this.searchTimer) {
+                clearTimeout(this.searchTimer);
+            }
+            if (e.which !== Common.ENTER_KEY) {
+                var that = this;
+                this.searchTimer = setTimeout(function(){
+                    that.doSearch();
+                }, 3000);
                 return;
             }
+            this.doSearch();
+        },
 
-            Todos.create(this.newAttributes());
-            this.$input.val('');
+        doSearch: function() {
+            var keyword = this.$input.val().trim();
+            if(!keyword || keyword.length < 3){
+                this.filtered = null;
+            }else{
+                this.filtered = Todos.search(keyword);
+                this.$input.blur();
+            }
+            this.addAll();
+            this.render();
         },
 
         clearDone: function () {
