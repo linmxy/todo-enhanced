@@ -27,7 +27,6 @@
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var del = require('del');
-var bower = require('gulp-bower');
 var runSequence = require('run-sequence');
 var browserSync = require('browser-sync');
 var pagespeed = require('psi');
@@ -124,7 +123,7 @@ gulp.task('html', function () {
 
 
 gulp.task('bower', function() {
-    return bower()
+    return $.bower()
         .pipe(gulp.dest('public/js/lib/'))
 });
 

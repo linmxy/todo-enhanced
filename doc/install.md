@@ -12,6 +12,7 @@ The dependencies are:
 * [Node.js](http://nodejs.org)
 * [Ruby](https://www.ruby-lang.org/)
 * [gulp.js](http://gulpjs.com)
+* [bower.js](http://bower.io)
 * [Sass](http://sass-lang.com/install)
 
 ### Node
@@ -36,6 +37,16 @@ If you don't see any errors, proceed to check for [gulp](#gulp).
 If you need to install Sass, see the command-line instructions on the [Sass installation](http://sass-lang.com/install) page.
 
 ### Gulp
+
+Bring up a terminal and type `gulp --version`.
+If Gulp is installed it should return a version number at or above 3.5.x.
+If you need to install Gulp, open up a terminal and type in the following:
+
+```sh
+$ npm install --global gulp
+```
+
+### Bower
 
 Bring up a terminal and type `gulp --version`.
 If Gulp is installed it should return a version number at or above 3.5.x.

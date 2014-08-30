@@ -1,1 +1,1 @@
-define(["underscore","backbone"],function(e,t){"use strict";var o=t.Model.extend({defaults:{title:"empty todo...",completed:!1},toggle:function(){this.save({completed:!this.get("completed")})}});return o});
+define(["underscore","backbone"],function(e,t){"use strict";var n=t.Model.extend({defaults:{title:"empty todo...",done:!1},toggle:function(){this.save({done:!this.get("done")})}});return n});
