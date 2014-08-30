@@ -1,7 +1,7 @@
 <div class="view">
-    <input type="checkbox" class="toggle" value="done" />
+    <input type="checkbox" class="toggle" {{#if done}}checked="checked"{{/if}} />
 
     <label>{{title}}</label>
-    <button class="destroy"><img src="img/icons/delete.png"/></button>
+    <a class="destroy"><img src="img/icons/delete.png"/></a>
 </div>
-<input class="edit" value="{{title}}">
+<input class="edit"  type="text" value="{{title}}">

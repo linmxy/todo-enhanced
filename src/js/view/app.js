@@ -23,9 +23,6 @@ define([
             'click #toggle-all':		'toggleAllComplete'
         },
 
-        // At initialization we bind to the relevant events on the `Todos`
-        // collection, when items are added or changed. Kick things off by
-        // loading any preexisting todos that might be saved in *localStorage*.
         initialize: function () {
             this.allCheckbox = this.$('#toggle-all')[0];
             this.$input = this.$('#new-todo');
@@ -79,14 +76,11 @@ define([
 //            });
         },
 
-        // Add a single todo item to the list by creating a view for it, and
-        // appending its element to the `<ul>`.
         addOne: function (todo) {
             var view = new TodoView({ model: todo });
             this.$todoList.append(view.render().el);
         },
 
-        // Add all items in the **Todos** collection at once.
         addAll: function () {
             this.$todoList.empty();
             Todos.each(this.addOne, this);
@@ -100,7 +94,6 @@ define([
             Todos.each(this.filterOne, this);
         },
 
-        // Generate the attributes for a new Todo item.
         newAttributes: function () {
             return {
                 title: this.$input.val().trim(),
@@ -109,8 +102,6 @@ define([
             };
         },
 
-        // If you hit return in the main input field, create new **Todo** model,
-        // persisting it to *localStorage*.
         createOnEnter: function (e) {
             if (e.which !== Common.ENTER_KEY || !this.$input.val().trim()) {
                 return;
@@ -120,7 +111,6 @@ define([
             this.$input.val('');
         },
 
-        // Clear all completed todo items, destroying their models.
         clearCompleted: function () {
             _.invoke(Todos.completed(), 'destroy');
             return false;
