@@ -1,10 +1,10 @@
 ## Overview
 
-[TODO Forever](https://github.com/linmxy/todo-forever) is an experimental boilerplate for web development. Helping you to stay productive following the best practices outlined in Google's [Web Fundamentals](http://developers.google.com/web/fundamentals). 
+[TODO Forever](https://github.com/linmxy/todo-forever) is an experimental boilerplate for web development. Helping you to stay productive following the best practices outlined in Google's [Web Fundamentals](http://developers.google.com/web/fundamentals).
 
 ## Quickstart
 
-[Download](https://github.com/linmxy/todo-forever) the source code or clone this repository and build on what is included in the `src` directory.
+[Download](https://github.com/linmxy/todo-forever/archive/master.zip) the source code or clone this repository and build on what is included in the `src` directory.
 
 main code directory:
 
@@ -16,4 +16,4 @@ Once you have verified that your system can run, check out the [commands](doc/co
 
 ## Web Performance
 
-Web Starter Kit strives to give you a high performance starting point out of the box and we actively work on delivering the best [PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/) score and frame-rate possible.
+The starting code is based on google's Web Starter Kit. By monitoring the page speed, it strives to give you a high performance starting point out of the box and we actively work on delivering the best [PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/) score and frame-rate possible.
