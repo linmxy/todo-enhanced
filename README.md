@@ -1,6 +1,6 @@
 ## Overview
 
-[TODO Forever](https://github.com/linmxy/todo-forever) is an experimental boilerplate for web development. Helping you to stay productive following the best practices outlined in Google's [Web Fundamentals](http://developers.google.com/web/fundamentals). A solid starting point for both professionals and newcomers to the industry.
+[TODO Forever](https://github.com/linmxy/todo-forever) is an experimental boilerplate for web development. Helping you to stay productive following the best practices outlined in Google's [Web Fundamentals](http://developers.google.com/web/fundamentals). 
 
 ## Quickstart
 
@@ -11,8 +11,8 @@ main code directory:
 - `src` - contain all original resources including css, html, javascript, img...
 - `public` - contain all distributed resources, usally compressed/optimized/concated resources. usally serve in product enviroment
 
-Be sure to look over the [installation docs](docs/install.md) to verify your environment is prepared to run the application.
-Once you have verified that your system can run, check out the [commands](docs/commands.md) available to get started.
+Be sure to look over the [installation docs](doc/install.md) to verify your environment is prepared to run the application.
+Once you have verified that your system can run, check out the [commands](doc/commands.md) available to get started.
 
 ## Web Performance
 
