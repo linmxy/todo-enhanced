@@ -14,6 +14,7 @@ define([
 
         localStorage: new Store('todos-backbone'),
 
+
         done: function () {
             return this.where({done: true});
         },
@@ -32,8 +33,10 @@ define([
             });
             return new TodosCollection(results);
         },
-
-        comparator: 'order'
+        comparator: function(model) {
+            return - model.get('create_time');
+        },
+//        comparator: 'order'
     });
 
     return new TodosCollection();

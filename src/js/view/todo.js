@@ -78,7 +78,7 @@ define([
             trimmedContent = trimmedContent.substring(0, 140);
 
             if (trimmedTitle || trimmedContent) {
-                this.model.save({ title: trimmedTitle, content: trimmedContent});
+                this.model.save({ title: trimmedTitle, content: trimmedContent, update_time: new Date().getTime()});
 
                 //Model values changes consisting of whitespaces only are not causing change to be triggered
                 if (title !== trimmedTitle || content !== trimmedContent) {
@@ -109,7 +109,7 @@ define([
 
         clear: function () {
             if(!this.model.get('done')){
-                alert('can not delete undone item');
+                Common.alert("Can't delete undone item");
             }else{
                 this.model.destroy();
             }

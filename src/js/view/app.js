@@ -98,7 +98,11 @@ define([
         },
 
         createOnEnter: function (e) {
+            //reset filte
+            this.$input.val('');
+            this.doSearch();
             Todos.create(this.newAttributes());
+            Todos.sort();
         },
         search: function (e) {
             if (this.searchTimer) {
@@ -108,7 +112,7 @@ define([
                 var that = this;
                 this.searchTimer = setTimeout(function(){
                     that.doSearch();
-                }, 3000);
+                }, 500);
                 return;
             }
             this.doSearch();
