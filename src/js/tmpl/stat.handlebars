@@ -1,17 +1,4 @@
-<span id="todo-count">
-    <strong>{{remaining}} </strong>{{#ifCond remaining == 1}}item{{else}}items{{/if}} left
-</span>
-<ul id="filters">
-    <li>
-        <a class="selected" href="#/">All</a>
-    </li>
-    <li>
-        <a href="#/active">Active</a>
-    </li>
-    <li>
-        <a href="#/completed">Completed</a>
-    </li>
-</ul>
-{{#if}}
-<button id="clear-completed">Clear completed {{completed}}</button>
-{{/if}}
+    {{#if done}}
+    <a id="clear-completed">Clear completed items</a>
+    {{/if}}
+    <div class="todo-count"><b>{{remaining}}</b> items left</div>
