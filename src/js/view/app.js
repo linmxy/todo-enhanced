@@ -19,7 +19,7 @@ define([
 
         events: {
             'keypress #new-todo':		'createOnEnter',
-            'click #clear-completed':	'clearCompleted',
+            'click #clear-completed':	'clearDone',
             'click #toggle-all':		'toggleAllComplete'
         },
 
@@ -111,7 +111,7 @@ define([
             this.$input.val('');
         },
 
-        cleardone: function () {
+        clearDone: function () {
             _.invoke(Todos.done(), 'destroy');
             return false;
         },
