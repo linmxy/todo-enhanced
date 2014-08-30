@@ -14,7 +14,7 @@ define([
 
         tagName:  'li',
 
-        template: _.template(todosTemplate),
+        template: Handlebars.compile(todosTemplate),
 
         // The DOM events specific to an item.
         events: {

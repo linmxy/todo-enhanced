@@ -14,7 +14,8 @@ define([
 
         el: '#todoapp',
 
-        template: _.template(statsTemplate),
+//        template: _.template(statsTemplate),
+        template: Handlebars.compile(statsTemplate),
 
         events: {
             'keypress #new-todo':		'createOnEnter',
