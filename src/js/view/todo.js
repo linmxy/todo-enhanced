@@ -75,6 +75,10 @@ define([
             trimmedContent = trimmedContent.replace(/([\w]{30})[\w]+/g, function(){
                 return arguments[1];
             });
+            if(trimmedContent.length>140){
+                Common.alert("Max length: 140");
+                return;
+            }
             trimmedContent = trimmedContent.substring(0, 140);
 
             if (trimmedTitle || trimmedContent) {

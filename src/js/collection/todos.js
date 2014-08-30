@@ -27,9 +27,10 @@ define([
             return this.length ? this.last().get('order') + 1 : 1;
         },
         search: function (keyword) {
+            var keyword = keyword.toLowerCase();
             var results = this.filter(function(model){
-                return model.get('title').indexOf(keyword)>=0 ||
-                    model.get('content').indexOf(keyword)>=0;
+                return model.get('title').toLowerCase().indexOf(keyword)>=0 ||
+                    model.get('content').toLowerCase().indexOf(keyword)>=0;
             });
             return new TodosCollection(results);
         },
