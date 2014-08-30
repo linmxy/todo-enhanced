@@ -1,12 +1,13 @@
 define([
     'jquery',
     'underscore',
-    'Backbone',
+    'backbone',
     'collection/todos',
     'view/todo',
-    'Text!tmpl/stat.handlebars',
+    'text!tmpl/stat.handlebars',
+    'handlebars',
     'common'
-], function ($, _, Backbone, Todos, TodoView, statsTemplate, Common) {
+], function ($, _, Backbone, Todos, TodoView, statsTemplate, Handlebars, Common) {
     'use strict';
 
     var AppView = Backbone.View.extend({
@@ -37,6 +38,7 @@ define([
             this.listenTo(Todos, 'filter', this.filterAll);
             this.listenTo(Todos, 'all', this.render);
 
+            this.registerHandlebarsPlugins();
             Todos.fetch({reset:true});
         },
 
@@ -65,6 +67,25 @@ define([
             }
 
             this.allCheckbox.checked = !remaining;
+        },
+
+        registerHandlebarsPlugins : function() {
+            Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
+                switch (operator) {
+                    case '==':
+                        return (v1 === v2) ? options.fn(this) : options.inverse(this);
+                    case '<':
+                        return (v1 < v2) ? options.fn(this) : options.inverse(this);
+                    case '<=':
+                        return (v1 <= v2) ? options.fn(this) : options.inverse(this);
+                    case '>':
+                        return (v1 > v2) ? options.fn(this) : options.inverse(this);
+                    case '>=':
+                        return (v1 >= v2) ? options.fn(this) : options.inverse(this);
+                    default:
+                        return options.inverse(this);
+                }
+            });
         },
 
         // Add a single todo item to the list by creating a view for it, and

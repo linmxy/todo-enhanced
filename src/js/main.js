@@ -3,9 +3,9 @@
  */
 require.config({
     shim: {
-        Handlebars: {
+        handlebars: {
             exports: 'Handlebars'
-        },
+        }
     },
     paths: {
         jquery: [
@@ -16,52 +16,28 @@ require.config({
             'http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min',
             'lib/underscore/underscore'
         ],
-        Backbone: [
+        backbone: [
             'http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min',
             'lib/backbone/backbone'
         ],
-//        Storage: [
-//            'http://cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.1.13/backbone.localStorage-min',
-//            'lib/backbone.localStorage/backbone.localStorage'
-//        ],
-        Text: [
+        localstorage: [
+            'http://cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.1.13/backbone.localStorage-min',
+            'lib/backbone.localStorage/backbone.localStorage'
+        ],
+        text: [
             'http://cdnjs.cloudflare.com/ajax/libs/require-text/2.0.12/text.min',
             'lib/requirejs-text/text'
         ],
-        Handlebars: [
+        handlebars: [
 //            'http://cdnjs.cloudflare.com/ajax/libs/requirejs-handlebars/0.0.2/hbars.min',
             'lib/handlebars/handlebars'
         ]
     }
 });
 
-require(['underscore','Backbone'], function (_,Storage) {
-    console.log("it works!", _, Storage);
+require(['handlebars','handlebars'], function (_,B) {
+    console.log("it works!", _, B);
 });
-require(['Backbone','view/app','Handlebars'], function (Backbone, AppView, Handlebars) {
-    Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
-        switch (operator) {
-            case '==':
-                return (v1 === v2) ? options.fn(this) : options.inverse(this);
-            case '===':
-                return (v1 === v2) ? options.fn(this) : options.inverse(this);
-            case '<':
-                return (v1 < v2) ? options.fn(this) : options.inverse(this);
-            case '<=':
-                return (v1 <= v2) ? options.fn(this) : options.inverse(this);
-            case '>':
-                return (v1 > v2) ? options.fn(this) : options.inverse(this);
-            case '>=':
-                return (v1 >= v2) ? options.fn(this) : options.inverse(this);
-            case '&&':
-                return (v1 && v2) ? options.fn(this) : options.inverse(this);
-            case '||':
-                return (v1 || v2) ? options.fn(this) : options.inverse(this);
-            default:
-                return options.inverse(this);
-        }
-    });
-//    console.log("it works!", Backbone);
-
+require(['backbone','view/app'], function (Backbone, AppView) {
     new AppView();
 });

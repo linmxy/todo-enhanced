@@ -4,8 +4,8 @@
 define([
     'jquery',
     'underscore',
-    'Backbone',
-    'Text!tmpl/item.handlebars',
+    'backbone',
+    'text!tmpl/item.handlebars',
     'common'
 ], function ($, _, Backbone, todosTemplate, Common) {
     'use strict';
