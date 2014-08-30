@@ -1,17 +1,6 @@
-<div id="todo-stats">
-    <span class="todo-count">
-      {{number}}
-        {{word}} left.
-    </span>
-    <span class="todo-clear">
-      <a href="#" class="remove-items">
-          Clear {{numberDone}}
-          completed {{wordDone}}
-      </a>
-    </span>
-</div>
-
-<span id="todo-count"><strong>{{remaining}}</strong>{{#if completed}}{{else}}checked{{/if}} <%= remaining == 1 ? 'item' : 'items' %> left</span>
+<span id="todo-count">
+    <strong>{{remaining}} </strong>{{#ifCond remaining == 1}}item{{else}}items{{/if}} left
+</span>
 <ul id="filters">
     <li>
         <a class="selected" href="#/">All</a>
@@ -23,6 +12,6 @@
         <a href="#/completed">Completed</a>
     </li>
 </ul>
-<% if ( completed ) { %>
-<button id="clear-completed">Clear completed (<%= completed %>)</button>
-<% } %>
+{{#if}}
+<button id="clear-completed">Clear completed {{completed}}</button>
+{{/if}}

@@ -4,7 +4,7 @@ define([
     'Backbone',
     'collections/todos',
     'views/todo',
-    'text!tmpl/stats.html',
+    'text!tmpl/stat.handlebars',
     'common'
 ], function ($, _, Backbone, Todos, TodoView, statsTemplate, Common) {
     'use strict';

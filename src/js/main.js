@@ -19,10 +19,10 @@ require.config({
             ],
             exports: 'Backbone'
         },
-//        backboneLocalstorage: {
-//            deps: ['backbone'],
-//            exports: 'storage'
-//        }
+        Storage: {
+            deps: ['backbone'],
+            exports: 'Storage'
+        }
     },
     paths: {
         JQuery: [

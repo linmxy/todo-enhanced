@@ -5,7 +5,7 @@ define([
     '$',
     '_',
     'Backbone',
-    'text!tmpl/item.html',
+    'text!tmpl/item.handlebars',
     'common'
 ], function ($, _, Backbone, todosTemplate, Common) {
     'use strict';
