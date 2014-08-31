@@ -159,9 +159,11 @@ gulp.task('default', ['clean'], function (cb) {
 });
 
 gulp.task('pagespeed', pagespeed.bind(null, {
-    url: 'https://www.google.com',
+    url: 'http://todo-enhanced.herokuapp.com',
     strategy: 'mobile'
 }));
+
+gulp.task('heroku', ['default']);
 
 //// Load custom tasks from the `tasks` directory
 //try {
