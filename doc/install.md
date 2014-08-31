@@ -46,16 +46,6 @@ If you need to install Gulp, open up a terminal and type in the following:
 $ npm install --global gulp
 ```
 
-### Bower
-
-Bring up a terminal and type `gulp --version`.
-If Gulp is installed it should return a version number at or above 3.5.x.
-If you need to install Gulp, open up a terminal and type in the following:
-
-```sh
-$ npm install --global gulp
-```
-
 This will install Gulp globally. Depending on your user account, you may need to gain elevated permissions using `sudo` (i.e `sudo npm install --global gulp`). Next, install the local dependencies Web Starter Kit requires:
 
 ```sh
@@ -63,6 +53,16 @@ $ sudo npm install
 ```
 
 That's it! You should now have everything needed to use the Web Starter Kit.
+
+### Bower
+
+
+Bower works by fetching and installing packages from all over, taking care of hunting, finding, downloading, and saving the stuff you’re looking for. Bower keeps track of these packages in a manifest file, bower.json
+
+```sh
+$ npm install -g bower
+```
+
 
 # Getting the code
 
