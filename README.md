@@ -1,6 +1,6 @@
 [ ![Codeship Status for linmxy/todo-enhanced](https://www.codeship.io/projects/c72e4830-1309-0132-d079-1e5862c1e42f/status)](https://www.codeship.io/projects/33278)
 
-# [![Web Starter Kit](public/img/screenshot.png)](https://github.com/linmxy/todo-enhanced)
+# [![website](public/img/screenshot.png)](http://todo-enhanced.herokuapp.com/)
 
 ## Overview
 
