@@ -11,7 +11,7 @@
 main code directory:
 
 - `src` - contain all original resources including css, html, javascript, img...
-- `public` - contain all distributed resources, usally compressed/optimized/concated resources. usally serve in product enviroment
+- `public` - contains compressed/optimized/concated resources. usually served in product enviroment
 
 Be sure to look over the [installation docs](doc/install.md) to verify your environment is prepared to run the application.
 Once you have verified that your system can run, check out the [commands](doc/commands.md) available to get started.

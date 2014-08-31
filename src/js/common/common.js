@@ -10,7 +10,7 @@ define(['jquery','backbone','view/alert'], function ($, Backbone, AlertView) {
     exports.alert = function(str){
         var model = new Backbone.Model({content: str});
         var alert = new AlertView({model: model});
-        $(document.body).append(alert.render().el);
+        alert.show();
     };
     return exports;
 });

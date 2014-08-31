@@ -25,8 +25,22 @@ define([
             this.$el.html(this.template(this.model.toJSON()));
             return this;
         },
+        show: function() {
+            this.render();
+            $(document.body).append(this.$el);
+            var that = this;
+            setTimeout(function(){
+                that.close();
+            }, 3000);
+        },
         close : function() {
-            this.$el.remove();
+            var $el = this.$el;
+            var modal = $el.find('.modal');
+            modal.addClass('hidden');
+            setTimeout(function(){
+                $el.remove();
+            }, 500);
+
         }
     });
 
